@@ -1,2 +1,2 @@
 class Config:
-    key: str = "AIzaSyBP-kqPHTbwPkddfKcHgLHtXSBmwBnKOJc" #Your api key
+    key: str = "You API key" #Your api key
