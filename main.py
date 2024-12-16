@@ -10,7 +10,7 @@ from plugins.LangBot_Plugin_YoutubeAnalysis.config import Config
 '''
 
 #注册插件
-@register(name='YoutubeAnalysis', description='当收到油管视频链接时，对该链接进行分析并发送封面，标题，作者，等内容', version='0.2', author="Garrise")
+@register(name='YoutubeAnalysis', description='当收到油管视频链接时，对该链接进行分析并发送封面，标题，作者，等内容', version='0.3', author="Garrise")
 class BiliAnalysisPlugin(BasePlugin):
     #插件加载时触发
     def __init__(self, host: APIHost):
@@ -20,7 +20,7 @@ class BiliAnalysisPlugin(BasePlugin):
     async def group_normal_message_received(self, ctx: EventContext):
         msg = str(ctx.event.message_chain).strip()
         # 如果msg含有youtube.com或https://youtu.be则截取视频id
-        match = re.search(r'www.youtube.com/watch\?v=([\w-]{11})', msg) or re.search(r'youtu.be/([\w-]{11})', msg)
+        match = re.search(r'www.youtube.com/watch\?v=([\w-]{11})', msg) or re.search(r'youtu.be/([\w-]{11})', msg) or re.search(r'youtube.com/shorts/([\w-]{11})', msg)
         if match:
             yt_id = match.group(1)
             print(f"Analyzing Youtube id: {yt_id}")
